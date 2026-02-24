@@ -4,7 +4,7 @@ import {CreateOrganization} from '../pages/organization.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup', async ({page}) => {
-    await page.goto('https://nyansapofoundation-teaching-dashboa.vercel.app/');
+    await page.goto('/');
 });
 
 test.describe('Organization Creation', async () => {
