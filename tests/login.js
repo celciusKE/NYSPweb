@@ -4,7 +4,7 @@ import {LoginPage, SignupPage} from '../pages/userlogin.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup',async({page})=>{
-    await page.goto('https://nyansapofoundation-teaching-dashboa.vercel.app/')
+    await page.goto('')
 })
 //1.Login Process
 test.describe('Login in process', async () => {
