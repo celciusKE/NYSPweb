@@ -1,8 +1,7 @@
 export class CreateProject {
     constructor(page){
         this.page = page;
-        this.selectOrganization = page.getByRole('button', { name: 'UATs' })
-        this.goToprojects = page.getByRole('button', { name: 'Projects' })
+        this.selectOrganization = page.getByRole('heading', { name: 'UATs' })
         this.createProjectButton = page.getByRole('button', { name: 'Create Project' })
         this.newProjectName = page.getByRole('textbox', { name: 'e.g., Read, count and shine' })
         this.newProjectCounty = page.getByRole('textbox', { name: 'e.g., Nairobi' })

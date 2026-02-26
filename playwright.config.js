@@ -82,7 +82,7 @@ export default defineConfig({
 
 });
 
-module.exports = {
-  testMatch: ['**/*.spec.js', '**/*.js'], // runs files ending with .spec.js or .test.js
-  // ...other config...
-};
+// module.exports = {
+//   testMatch: ['**/*.spec.js', '**/*.js'], // runs files ending with .spec.js or .test.js
+//   // ...other config...
+// };
