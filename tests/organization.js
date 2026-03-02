@@ -4,7 +4,8 @@ import {CreateOrganization} from '../pages/organization.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup', async ({page}) => {
-    await page.goto('/');
+    const actions = new CommonActions(page);
+    await actions.navigate();
 });
 
 test.describe('Organization Creation', async () => {

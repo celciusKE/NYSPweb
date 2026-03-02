@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {},
   "keywords": [],
   "author": "",
@@ -10,5 +11,8 @@
   "devDependencies": {
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0"
+  },
+  "dependencies": {
+    "playwright": "^1.58.2"
   }
 }

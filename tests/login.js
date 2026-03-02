@@ -4,7 +4,8 @@ import {LoginPage, SignupPage} from '../pages/userlogin.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup',async({page})=>{
-    await page.goto('')
+    const actions = new CommonActions(page)
+    await actions.navigate()
 })
 //1.Login Process
 test.describe('Login in process', async () => {
