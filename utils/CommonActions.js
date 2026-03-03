@@ -17,7 +17,7 @@ export default class CommonActions{
 
     async navigate(url){
         //await this.page.pause()
-        await this.page.goto('https://nyansapofoundation-teaching-dashboa.vercel.app/')
+        await this.page.goto('/')
     }
 
     async login(phoneNumber, pin){
