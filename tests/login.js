@@ -63,6 +63,39 @@ test('Missing mandatory fields during login:pin',async({page})=>{
     await expect(MissingPinNumError).toBeVisible()
 })
 
+// Edge case tests for login
+test('Short phone number login',async({page})=>{
+    const actions = new CommonActions(page)
+    await actions.login(
+        testData.users.shortPhoneNumber.phoneNumber,
+        testData.users.shortPhoneNumber.pin
+    )
+    const shortPhoneError = page.getByText('Phone number must be 9-10')
+    await expect(shortPhoneError).toBeVisible()
+})
+
+test('Short PIN login',async({page})=>{
+    const actions = new CommonActions(page)
+    await actions.login(
+        testData.users.shortPin.phoneNumber,
+        testData.users.shortPin.pin
+    )
+    const shortPinError = page.getByText('PIN must be exactly 6 digits')
+    await expect(shortPinError).toBeVisible()
+})
+
+
+test('Long phone number login',async({page})=>{
+    const actions = new CommonActions(page)
+    await actions.login(
+        testData.users.longPhoneNumber.phoneNumber,
+        testData.users.longPhoneNumber.pin
+    )
+    // Should show an error for invalid phone number format
+    const invalidPhoneError = page.getByText('Phone number must be 9-10')
+    await expect(invalidPhoneError).toBeVisible()
+})
+
 })
 
 //2.Sign Up process

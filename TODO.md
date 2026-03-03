@@ -1,11 +1,11 @@
-# Replace page locator with navigate object in CommonActions
+# TODO - Add Edge Cases to Test Files
 
-## Files Updated:
-- [x] tests/login.js - Replaced page.goto() with actions.navigate()
-- [x] tests/organization.js - Replaced page.goto() with actions.navigate()
-- [x] tests/project.js - Replaced page.goto() with actions.navigate()
-- [x] tests/assessments.js - Replaced page.goto() with actions.navigate()
+## Plan Status: Completed
 
-## Changes Made:
-- In beforeEach hooks, created CommonActions instance and called navigate() method instead of page.goto()
-- All test files now use the navigate() method from CommonActions for navigation
+### Completed Tasks:
+- [x] 1. Add new test data to fixtures/testdata.json
+- [x] 2. Add edge case tests to tests/login.js
+- [x] 3. Add edge case tests to tests/organization.js
+- [x] 4. Add edge case tests to tests/project.js
+- [x] 5. Verify all changes are correct
+

@@ -1,5 +1,3 @@
-import { Page } from '@playwright/test';
-
 export default class CommonActions{
     constructor(page){
         this.page = page;
