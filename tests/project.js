@@ -4,8 +4,12 @@ import { CreateProject } from '../pages/project.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup', async ({page}) => {
+<<<<<<< HEAD
     const actions = new CommonActions(page);
     await actions.navigate();
+=======
+    await page.goto('https://nyansapofoundation-teaching-dashboa.vercel.app/');
+>>>>>>> parent of 25dc812 (Change project URL in test setup)
 });
 
 test.describe('Project Creation', async () => {
