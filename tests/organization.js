@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
-import CommonActions from '../utils/CommonActions.js';
-import {CreateOrganization} from '../pages/organization.js';
+import CommonActions from '../utils/CommonActions.helper.js'
+import { CreateProject } from '../pages/project.po.js';
+import { CreateOrganization } from '../pages/organization.po.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup', async ({page}) => {
