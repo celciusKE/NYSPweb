@@ -1,4 +1,9 @@
 require('dotenv').config();
+
+if (!process.env.EMAIL_TO) {
+  process.env.EMAIL_TO = 'nelly@nyansapoai.app';
+}
+
 const nodemailer = require('nodemailer');
 const archiver = require('archiver');
 const fs = require('fs');

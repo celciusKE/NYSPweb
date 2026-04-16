@@ -47,8 +47,5 @@ jobs:
 
       - name: Send report email
         if: always()
-        env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        env:\n          EMAIL_USER: ${{ secrets.EMAIL_USER }}\n          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}\n          EMAIL_TO: ${{ secrets.EMAIL_TO }}  # Set this secret to 'nelly@nyansapoai.app' in repo Settings > Secrets > Actions
         run: node send-report.js
