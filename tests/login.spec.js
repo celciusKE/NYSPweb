@@ -12,12 +12,10 @@ test.describe('Login in process', async () => {
 
 test('valid user login', async ({ page }) => {
     const actions = new CommonActions(page)
-    //user can login in with valid credentials
     await actions.login(
         testData.users.validUser.phoneNumber,
         testData.users.validUser.pin
     )
-    // Assertions use the expect success response
     const successMessage = page.getByText('Login successful! Redirecting')
     await expect(successMessage).toBeVisible()
     });
@@ -29,7 +27,6 @@ test('invalid phone number login',async({page})=>{
         testData.users.invalidPhoneNumber.pin
     )
     const invalidLoginError = page.getByText('Number not registered')
-    //assertion
     await expect(invalidLoginError).toBeVisible()
 })
 test('Valid phone number invalid Pin',async({page})=>{
@@ -39,7 +36,6 @@ test('Valid phone number invalid Pin',async({page})=>{
          testData.users.invalidPin.pin
         )
     const invalidPinError = page.getByText('Invalid credentials')
-    //assertion
     await expect(invalidPinError).toBeVisible()
 })
 test('Missing mandatory fields during login:phone number',async({page})=>{
@@ -49,7 +45,6 @@ test('Missing mandatory fields during login:phone number',async({page})=>{
          testData.users.emptyPhoneNumber.pin
         )
     const MissingPhoneNumError = page.getByText('Phone number is required')
-    //assertion
     await expect(MissingPhoneNumError).toBeVisible()
 })
 test('Missing mandatory fields during login:pin',async({page})=>{
@@ -59,11 +54,9 @@ test('Missing mandatory fields during login:pin',async({page})=>{
         testData.users.emptyPin.pin
     )
     const MissingPinNumError = page.getByText('PIN is required')
-    //assertion
     await expect(MissingPinNumError).toBeVisible()
 })
 
-// Edge case tests for login
 test('Short phone number login',async({page})=>{
     const actions = new CommonActions(page)
     await actions.login(
@@ -84,21 +77,18 @@ test('Short PIN login',async({page})=>{
     await expect(shortPinError).toBeVisible()
 })
 
-
 test('Long phone number login',async({page})=>{
     const actions = new CommonActions(page)
     await actions.login(
         testData.users.longPhoneNumber.phoneNumber,
         testData.users.longPhoneNumber.pin
     )
-    // Should show an error for invalid phone number format
     const invalidPhoneError = page.getByText('Phone number must be 9-10')
     await expect(invalidPhoneError).toBeVisible()
 })
 
 })
 
-//2.Sign Up process
 test.describe('Verify sign up process',async()=>{
     test('valid user sign up for an account',async({page})=>{
         const userSignUp = new SignupPage(page)
@@ -112,5 +102,4 @@ test.describe('Verify sign up process',async()=>{
         const successSignUpMessage = page.getByText('Phone already registered')
         await expect(successSignUpMessage).toBeVisible()
     })
-   
 })

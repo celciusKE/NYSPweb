@@ -37,7 +37,7 @@ test.describe('Project Creation', async () => {
 
     test('create a new school by uploading excel file', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);``
+        const projectPage = new CreateProject(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -164,4 +164,3 @@ test.describe('Project Creation', async () => {
         await expect(duplicateError).toBeVisible();
     });
 });
-
