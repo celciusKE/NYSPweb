@@ -4,7 +4,7 @@ export class CreateOrganization {
         this.addOrganizationButton = page.getByRole('button', { name: 'Add Organization' })
         this.organizationNameInput = page.getByRole('textbox', { name: 'Organization Name' })
         this.createSandboxCheckbox = page.getByRole('checkbox', { name: 'Create Sandbox Organization' })
-        this.submitOrganizationButton = page.getByRole('button', { name: 'Create Organization' })
+        this.submitOrganizationButton = page.getByRole('button', { name: 'Create' })
     }
 
     
@@ -25,3 +25,4 @@ export class CreateOrganization {
         await this.submitOrganizationButton.click()
     }
 }
+  

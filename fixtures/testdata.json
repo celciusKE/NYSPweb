@@ -1,0 +1,122 @@
+{
+  "users": {
+    "validUser": {
+      "phoneNumber": "795194374",
+      "pin": "123456"
+    },
+    "invalidPhoneNumber": {
+      "phoneNumber": "700000000",
+      "pin": "123456"
+    },
+    "invalidPin": {
+      "phoneNumber": "795194374",
+      "pin": "000000"
+    },
+    "emptyPhoneNumber": {
+      "phoneNumber": "",
+      "pin": "123456"
+    },
+    "emptyPin": {
+      "phoneNumber": "754321000",
+      "pin": ""
+    },
+    "shortPhoneNumber": {
+      "phoneNumber": "795",
+      "pin": "123456"
+    },
+    "shortPin": {
+      "phoneNumber": "795194374",
+      "pin": "123"
+    },
+    "alphanumericPin": {
+      "phoneNumber": "795194374",
+      "pin": "abc123"
+    },
+    "whitespacePhoneNumber": {
+      "phoneNumber": " 795194374 ",
+      "pin": "123456"
+    },
+    "longPhoneNumber": {
+      "phoneNumber": "79519437412345",
+      "pin": "123456"
+    }
+  },
+  "signup": {
+    "validUser": {
+      "name": "Test User",
+      "email": "testuser123@example.com",
+      "phoneNumber": "798765432",
+      "pin": "654321",
+      "confirmPin": "654321"
+    }
+  },
+  "organization":{
+    "organizationName":"Automated Test Organization",
+    "emptyOrganizationName": "",
+    "longOrganizationName": "Organization Name That Is Way Too Long And Exceeds The Maximum Character Limit For Organization Names In The System Which Should Trigger A Validation Error",
+    "specialCharOrganizationName": "Test@#$%^&*Organization",
+    "duplicateOrganizationName": "Existing Organization"
+  },
+  "projects":{
+    "projectName":"Automated Test Project",
+    "projectCounty" : "Nairobi",
+    "emptyProjectName": "",
+    "emptyProjectCounty": "",
+    "specialCharProjectName": "Test!@#$%Project",
+    "duplicateProjectName": "Existing Project"
+  },
+  "schools":{
+    "excelFilePath": "fixtures/school_template (3).xlsx",
+    "successMessage": "Schools uploaded successfully"
+  },
+  "assessments": {
+    "validAssessment": {
+      "assessmentName": "Q1_2024_Math_Test",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "emptyName": {
+      "assessmentName": "",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "specialCharactersName": {
+      "assessmentName": "!@#$%^&*()",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "veryLongName": {
+      "assessmentName": "A very long assessment name that exceeds the maximum character limit for assessment names in the system and should trigger validation error",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "duplicateName": {
+      "assessmentName": "Existing_Assessment",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "noProject": {
+      "assessmentName": "Test Assessment",
+      "projectName": "",
+      "schoolName": "School A",
+      "assessmentType": "Numeracy"
+    },
+    "noSchool": {
+      "assessmentName": "Test Assessment",
+      "projectName": "Test Project",
+      "schoolName": "",
+      "assessmentType": "Numeracy"
+    },
+    "noAssessmentType": {
+      "assessmentName": "Test Assessment",
+      "projectName": "Test Project",
+      "schoolName": "School A",
+      "assessmentType": ""
+    }
+  }
+}

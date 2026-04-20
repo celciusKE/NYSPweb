@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
-import CommonActions from '../utils/CommonActions.js';
-import { CreateProject } from '../pages/project.js';
+import CommonActions from '../support/CommonActions.helper.js';
+import {CreateOrganization} from '../support/pages/organization.po.js';
 import testData from '../fixtures/testdata.json' assert { type: "json" };
 
 test.beforeEach('Setup', async ({page}) => {
@@ -8,11 +8,11 @@ test.beforeEach('Setup', async ({page}) => {
     await actions.navigate();
 });
 
-test.describe('Project Creation', async () => {
+test.describe('Organization Creation', async () => {
     
-    test('create a new project', async ({page}) => {
+    test('create a new organization', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -24,20 +24,21 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Select an organization and create a new project
-        await projectPage.createNewProject(
-            testData.projects.projectName,
-            testData.projects.projectCounty
+        // 2. Create a new organization
+        await organizationPage.createNewOrganization(
+            testData.organization.organizationName,
+            false // createSandbox = false
         );
         
-        // 3. Add assertion to verify project was created
-        // const projectCreated = page.getByText(testData.projects.projectName);
-        // await expect(projectCreated).toBeVisible();
+        // 3. Add assertion to verify organization was created
+        // The success message or the organization name should be visible
+        const organizationCreated = page.getByText(testData.organization.organizationName);
+        await expect(organizationCreated).toBeVisible();
     });
 
-    test('create a new school by uploading excel file', async ({page}) => {
+    test('create a new sandbox organization', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);``
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -49,24 +50,21 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Select an organization
-        await projectPage.selectOrganization.click();
+        // 2. Create a new sandbox organization
+        await organizationPage.createNewOrganization(
+            'Sandbox Test Organization',
+            true // createSandbox = true
+        );
         
-        // 3. Go to Projects
-        await projectPage.goToprojects.click();
-        
-        // 4. Create a new school by uploading excel file
-        await projectPage.createSchool();
-        
-        // 5. Add assertion to verify schools were created
-        // const successUploadMessage = page.getByText(/schools uploaded successfully|import successful/i);
-        // await expect(successUploadMessage).toBeVisible();
+// 3. Add assertion to verify organization was created
+        const organizationCreated = page.getByText('Sandbox Test Organization');
+        await expect(organizationCreated).toBeVisible();
     });
 
-    // Edge case tests for project creation
-    test('create project with empty name', async ({page}) => {
+    // Edge case tests for organization creation
+    test('create organization with empty name', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -78,20 +76,20 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Try to create project with empty name
-        await projectPage.createNewProject(
-            testData.projects.emptyProjectName,
-            testData.projects.projectCounty
+        // 2. Try to create organization with empty name
+        await organizationPage.createNewOrganization(
+            testData.organization.emptyOrganizationName,
+            false
         );
         
         // 3. Add assertion to verify error message is shown
-        const emptyNameError = page.getByText('Project name is required');
+        const emptyNameError = page.getByText('Organization name is required');
         await expect(emptyNameError).toBeVisible();
     });
 
-    test('create project with empty county', async ({page}) => {
+    test('create organization with very long name', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -103,20 +101,20 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Try to create project with empty county
-        await projectPage.createNewProject(
-            testData.projects.projectName,
-            testData.projects.emptyProjectCounty
+        // 2. Try to create organization with very long name
+        await organizationPage.createNewOrganization(
+            testData.organization.longOrganizationName,
+            false
         );
         
         // 3. Add assertion to verify error message is shown
-        const emptyCountyError = page.getByText('County is required');
-        await expect(emptyCountyError).toBeVisible();
+        const longNameError = page.getByText('Organization name is too long');
+        await expect(longNameError).toBeVisible();
     });
 
-    test('create project with special characters in name', async ({page}) => {
+    test('create organization with special characters in name', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -128,20 +126,20 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Try to create project with special characters in name
-        await projectPage.createNewProject(
-            testData.projects.specialCharProjectName,
-            testData.projects.projectCounty
+        // 2. Try to create organization with special characters in name
+        await organizationPage.createNewOrganization(
+            testData.organization.specialCharOrganizationName,
+            false
         );
         
         // 3. Add assertion to verify error message is shown
-        const specialCharError = page.getByText('Project name cannot contain special characters');
+        const specialCharError = page.getByText('Organization name cannot contain special characters');
         await expect(specialCharError).toBeVisible();
     });
 
-    test('create duplicate project', async ({page}) => {
+    test('create duplicate organization', async ({page}) => {
         const actions = new CommonActions(page);
-        const projectPage = new CreateProject(page);
+        const organizationPage = new CreateOrganization(page);
         
         // 1. Login with valid credentials
         await actions.login(
@@ -153,15 +151,14 @@ test.describe('Project Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Try to create duplicate project
-        await projectPage.createNewProject(
-            testData.projects.duplicateProjectName,
-            testData.projects.projectCounty
+        // 2. Try to create duplicate organization
+        await organizationPage.createNewOrganization(
+            testData.organization.duplicateOrganizationName,
+            false
         );
         
         // 3. Add assertion to verify error message is shown
-        const duplicateError = page.getByText('Project already exists');
+        const duplicateError = page.getByText('Organization already exists');
         await expect(duplicateError).toBeVisible();
     });
 });
-

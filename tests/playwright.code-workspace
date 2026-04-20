@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "playwright",
+			"path": ".."
+		},
+		{
+			"name": "support",
+			"path": "../../../Desktop/Nyansapo/NYSPweb/support"
+		},
+		{
+			"name": "tests",
+			"path": "../../../Desktop/Nyansapo/NYSPweb/tests"
+		},
+		{
+			"name": "fixtures",
+			"path": "../../../Desktop/Nyansapo/NYSPweb/fixtures"
+		}
+	],
+	"settings": {}
+}
