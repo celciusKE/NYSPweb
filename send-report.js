@@ -9,6 +9,8 @@ const archiver = require('archiver');
 const fs = require('fs');
 const path = require('path');
 
+
+
 // Zip the report using archiver (cross-platform)
 async function zipReport() {
   return new Promise((resolve, reject) => {
@@ -61,6 +63,7 @@ async function sendEmail() {
   console.log('Email sent successfully');
 }
 
+sendEmail().catch(console.error);
 zipReport()
   .then(sendEmail)
   .catch(err => console.error('Error:', err));

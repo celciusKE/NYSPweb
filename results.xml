@@ -1,0 +1,11 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="21.611935000000006">
+<testsuite name="project.spec.js" timestamp="2026-05-05T20:55:23.468Z" hostname="chromium" tests="1" failures="0" skipped="0" time="16.835" errors="0">
+<testcase name="Project Creation › create a new school by uploading excel file" classname="project.spec.js" time="16.835">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\project-Project-Creation-c-e7c62-ool-by-uploading-excel-file-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -47,6 +47,7 @@ test.describe('Assessment Creation', async () => {
     // Negative Test Cases
     test('create assessment with empty name - should show validation error', async ({page}) => {
         const actions = new CommonActions(page);
+        const projectPage = new CreateProject(page);
         const assessmentsPage = new CreateAssessments(page);
         
         // 1. Login with valid credentials
@@ -59,21 +60,28 @@ test.describe('Assessment Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Navigate to assessments section
+          // 2. Select an organization
+        await projectPage.selectOrganization.click()
+
+        // 3. Navigate to assessments section
+        await assessmentsPage.gotoAssessments.click();
+
+        // 4. Click on add new assessments
         await assessmentsPage.addNewAssessments.click();
         
-        // 3. Try to create assessment with empty name
+        // 5. Try to create assessment with empty name
         await assessmentsPage.enterAssessmentName.click();
         await assessmentsPage.enterAssessmentName.fill(testData.assessments.emptyName.assessmentName);
         await assessmentsPage.gotoNext.click();
         
-        // 4. Verify validation error is shown
-        const validationError = page.getByText(/assessment name is required|please enter a valid name/i);
+        // 6. Verify validation error is shown
+        const validationError = page.getByText('Please enter an assessment');
         await expect(validationError).toBeVisible();
     });
 
     test('create assessment with special characters in name - should show validation error', async ({page}) => {
         const actions = new CommonActions(page);
+        const projectPage = new CreateProject(page);
         const assessmentsPage = new CreateAssessments(page);
         
         // 1. Login with valid credentials
@@ -82,14 +90,20 @@ test.describe('Assessment Creation', async () => {
             testData.users.validUser.pin
         );
         
-        // Wait for successful login
+        // 2.Wait for successful login
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Navigate to assessments section
+          // 3. Select an organization
+        await projectPage.selectOrganization.click()
+
+        // 4. Navigate to assessments section
+        await assessmentsPage.gotoAssessments.click();
+
+        // 5. Click on add new assessments
         await assessmentsPage.addNewAssessments.click();
         
-        // 3. Try to create assessment with special characters
+        // 6. Try to create assessment with special characters
         await assessmentsPage.enterAssessmentName.click();
         await assessmentsPage.enterAssessmentName.fill(testData.assessments.specialCharactersName.assessmentName);
         await assessmentsPage.gotoNext.click();
@@ -101,6 +115,7 @@ test.describe('Assessment Creation', async () => {
 
     test('create assessment with very long name - should show validation error', async ({page}) => {
         const actions = new CommonActions(page);
+        const projectPage = new CreateProject(page);
         const assessmentsPage = new CreateAssessments(page);
         
         // 1. Login with valid credentials
@@ -113,7 +128,13 @@ test.describe('Assessment Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Navigate to assessments section
+          // 2. Select an organization
+        await projectPage.selectOrganization.click()
+
+        // 3. Navigate to assessments section
+        await assessmentsPage.gotoAssessments.click();
+
+        // 4. Click on add new assessments
         await assessmentsPage.addNewAssessments.click();
         
         // 3. Try to create assessment with very long name
@@ -128,6 +149,7 @@ test.describe('Assessment Creation', async () => {
 
     test('create assessment with duplicate name - should show error', async ({page}) => {
         const actions = new CommonActions(page);
+        const projectPage = new CreateProject(page);
         const assessmentsPage = new CreateAssessments(page);
         
         // 1. Login with valid credentials
@@ -140,10 +162,16 @@ test.describe('Assessment Creation', async () => {
         const successMessage = page.getByText('Login successful! Redirecting');
         await expect(successMessage).toBeVisible();
         
-        // 2. Navigate to assessments section
+          // 2. Select an organization
+        await projectPage.selectOrganization.click()
+
+        // 3. Navigate to assessments section
+        await assessmentsPage.gotoAssessments.click();
+
+        // 4. Click on add new assessments
         await assessmentsPage.addNewAssessments.click();
         
-        // 3. Try to create assessment with duplicate name
+        // 5. Try to create assessment with duplicate name
         await assessmentsPage.createNewAssessment(
             testData.assessments.duplicateName.assessmentName,
             testData.assessments.duplicateName.projectName,

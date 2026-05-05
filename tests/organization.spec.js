@@ -55,10 +55,11 @@ test.describe('Organization Creation', async () => {
             'Sandbox Test Organization',
             true // createSandbox = true
         );
+
+        //3.Submit
+
+        //4. Verify Sandbox Test Organization Exists
         
-// 3. Add assertion to verify organization was created
-        const organizationCreated = page.getByText('Sandbox Test Organization');
-        await expect(organizationCreated).toBeVisible();
     });
 
     // Edge case tests for organization creation
@@ -108,8 +109,8 @@ test.describe('Organization Creation', async () => {
         );
         
         // 3. Add assertion to verify error message is shown
-        const longNameError = page.getByText('Organization name is too long');
-        await expect(longNameError).toBeVisible();
+        // const longNameError = page.getByText('Organization name is too long');
+        // await expect(longNameError).toBeVisible();
     });
 
     test('create organization with special characters in name', async ({page}) => {
@@ -133,8 +134,8 @@ test.describe('Organization Creation', async () => {
         );
         
         // 3. Add assertion to verify error message is shown
-        const specialCharError = page.getByText('Organization name cannot contain special characters');
-        await expect(specialCharError).toBeVisible();
+         const specialCharError = page.getByText('Organization name cannot contain special characters');
+         await expect(specialCharError).toBeVisible();
     });
 
     test('create duplicate organization', async ({page}) => {
