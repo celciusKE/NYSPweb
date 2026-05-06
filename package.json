@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:report": "playwright test && node send-report.js"
+    "test:report": "node run-tests-and-send-report.js"
   },
   "keywords": [],
   "author": "",
