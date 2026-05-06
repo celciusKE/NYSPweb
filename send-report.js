@@ -1,15 +1,17 @@
 require('dotenv').config();
 
-if (!process.env.EMAIL_TO) {
-  process.env.EMAIL_TO = 'nelly@nyansapoai.app';
-}
-
 const nodemailer = require('nodemailer');
 const archiver = require('archiver');
 const fs = require('fs');
 const path = require('path');
 
+const requiredEnvVars = ['EMAIL_USER', 'EMAIL_PASS', 'EMAIL_TO'];
 
+for (const name of requiredEnvVars) {
+  if (!process.env[name]) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+}
 
 // Zip the report using archiver (cross-platform)
 async function zipReport() {
@@ -63,7 +65,6 @@ async function sendEmail() {
   console.log('Email sent successfully');
 }
 
-sendEmail().catch(console.error);
 zipReport()
   .then(sendEmail)
   .catch(err => console.error('Error:', err));

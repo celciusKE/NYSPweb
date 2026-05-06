@@ -1,9 +1,513 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="21.611935000000006">
-<testsuite name="project.spec.js" timestamp="2026-05-05T20:55:23.468Z" hostname="chromium" tests="1" failures="0" skipped="0" time="16.835" errors="0">
-<testcase name="Project Creation › create a new school by uploading excel file" classname="project.spec.js" time="16.835">
+<testsuites id="" name="" tests="26" failures="14" skipped="0" errors="0" time="54.689268000000006">
+<testsuite name="assessments.spec.js" timestamp="2026-05-06T10:10:37.220Z" hostname="chromium" tests="5" failures="5" skipped="0" time="43.061" errors="0">
+<testcase name="Assessment Creation › create a new assessment with valid data" classname="assessments.spec.js" time="10.307">
+<failure message="assessments.spec.js:15:9 create a new assessment with valid data" type="FAILURE">
+<![CDATA[  [chromium] › assessments.spec.js:15:9 › Assessment Creation › create a new assessment with valid data 
+
+    Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'Assessments' }) resolved to 2 elements:
+        1) <button class="flex items-center space-x-3 p-4 rounded-2xl transition-all duration-200 bg-background-lighter text-foreground hover:bg-primary-2 hover:text-white hover:shadow-md">…</button> aka getByRole('button', { name: 'Assessments', exact: true })
+        2) <button class="flex items-center space-x-3 p-4 rounded-2xl transition-all duration-200 bg-background-lighter text-foreground hover:bg-primary-2 hover:text-white hover:shadow-md">…</button> aka getByRole('button', { name: 'Map Assessments' })
+
+    Call log:
+      - waiting for getByRole('button', { name: 'Assessments' })
+
+
+       at ..\support\pages\instructors.po.js:118
+
+      116 |     async createNewAssessment(assessmentName, projectName, schoolName, assessmentType){
+      117 |         //1. Click on Add Assessment button
+    > 118 |         await this.gotoAssessments.click()
+          |                                    ^
+      119 |         await this.addNewAssessments.click()
+      120 |         
+      121 |         //2. Enter assessment name
+        at CreateAssessments.createNewAssessment (C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\support\pages\instructors.po.js:118:36)
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\assessments.spec.js:35:31
+
+    Error Context: ..\test-results\assessments-Assessment-Cre-927ec--assessment-with-valid-data-chromium\error-context.md
+]]>
+</failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results\project-Project-Creation-c-e7c62-ool-by-uploading-excel-file-chromium\trace.zip]]
+[[ATTACHMENT|test-results\assessments-Assessment-Cre-927ec--assessment-with-valid-data-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Assessment Creation › create assessment with empty name - should show validation error" classname="assessments.spec.js" time="7.58">
+<failure message="assessments.spec.js:48:9 create assessment with empty name - should show validation error" type="FAILURE">
+<![CDATA[  [chromium] › assessments.spec.js:48:9 › Assessment Creation › create assessment with empty name - should show validation error 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Login successful! Redirecting')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Login successful! Redirecting')
+
+
+      59 |         // Wait for successful login
+      60 |         const successMessage = page.getByText('Login successful! Redirecting');
+    > 61 |         await expect(successMessage).toBeVisible();
+         |                                      ^
+      62 |         
+      63 |           // 2. Select an organization
+      64 |         await projectPage.selectOrganization.click()
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\assessments.spec.js:61:38
+
+    Error Context: ..\test-results\assessments-Assessment-Cre-eb230-hould-show-validation-error-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\assessments-Assessment-Cre-eb230-hould-show-validation-error-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Assessment Creation › create assessment with special characters in name - should show validation error" classname="assessments.spec.js" time="7.447">
+<failure message="assessments.spec.js:82:9 create assessment with special characters in name - should show validation error" type="FAILURE">
+<![CDATA[  [chromium] › assessments.spec.js:82:9 › Assessment Creation › create assessment with special characters in name - should show validation error 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Login successful! Redirecting')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Login successful! Redirecting')
+
+
+      93 |         // 2.Wait for successful login
+      94 |         const successMessage = page.getByText('Login successful! Redirecting');
+    > 95 |         await expect(successMessage).toBeVisible();
+         |                                      ^
+      96 |         
+      97 |           // 3. Select an organization
+      98 |         await projectPage.selectOrganization.click()
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\assessments.spec.js:95:38
+
+    Error Context: ..\test-results\assessments-Assessment-Cre-e6b5c-hould-show-validation-error-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\assessments-Assessment-Cre-e6b5c-hould-show-validation-error-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Assessment Creation › create assessment with very long name - should show validation error" classname="assessments.spec.js" time="7.568">
+<failure message="assessments.spec.js:116:9 create assessment with very long name - should show validation error" type="FAILURE">
+<![CDATA[  [chromium] › assessments.spec.js:116:9 › Assessment Creation › create assessment with very long name - should show validation error 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Login successful! Redirecting')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Login successful! Redirecting')
+
+
+      127 |         // Wait for successful login
+      128 |         const successMessage = page.getByText('Login successful! Redirecting');
+    > 129 |         await expect(successMessage).toBeVisible();
+          |                                      ^
+      130 |         
+      131 |           // 2. Select an organization
+      132 |         await projectPage.selectOrganization.click()
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\assessments.spec.js:129:38
+
+    Error Context: ..\test-results\assessments-Assessment-Cre-cf86d-hould-show-validation-error-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\assessments-Assessment-Cre-cf86d-hould-show-validation-error-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Assessment Creation › create assessment with duplicate name - should show error" classname="assessments.spec.js" time="10.159">
+<failure message="assessments.spec.js:150:9 create assessment with duplicate name - should show error" type="FAILURE">
+<![CDATA[  [chromium] › assessments.spec.js:150:9 › Assessment Creation › create assessment with duplicate name - should show error 
+
+    Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'Assessments' }) resolved to 2 elements:
+        1) <button class="flex items-center space-x-3 p-4 rounded-2xl transition-all duration-200 bg-background-lighter text-foreground hover:bg-primary-2 hover:text-white hover:shadow-md">…</button> aka getByRole('button', { name: 'Assessments', exact: true })
+        2) <button class="flex items-center space-x-3 p-4 rounded-2xl transition-all duration-200 bg-background-lighter text-foreground hover:bg-primary-2 hover:text-white hover:shadow-md">…</button> aka getByRole('button', { name: 'Map Assessments' })
+
+    Call log:
+      - waiting for getByRole('button', { name: 'Assessments' })
+
+
+      167 |
+      168 |         // 3. Navigate to assessments section
+    > 169 |         await assessmentsPage.gotoAssessments.click();
+          |                                               ^
+      170 |
+      171 |         // 4. Click on add new assessments
+      172 |         await assessmentsPage.addNewAssessments.click();
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\assessments.spec.js:169:47
+
+    Error Context: ..\test-results\assessments-Assessment-Cre-26674-te-name---should-show-error-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\assessments-Assessment-Cre-26674-te-name---should-show-error-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="login.spec.js" timestamp="2026-05-06T10:10:37.220Z" hostname="chromium" tests="9" failures="1" skipped="0" time="27.923" errors="0">
+<testcase name="Login in process › valid user login" classname="login.spec.js" time="7.573">
+</testcase>
+<testcase name="Login in process › invalid phone number login" classname="login.spec.js" time="3.345">
+</testcase>
+<testcase name="Login in process › Valid phone number invalid Pin" classname="login.spec.js" time="3.433">
+</testcase>
+<testcase name="Login in process › Missing mandatory fields during login:phone number" classname="login.spec.js" time="1.572">
+</testcase>
+<testcase name="Login in process › Missing mandatory fields during login:pin" classname="login.spec.js" time="1.571">
+</testcase>
+<testcase name="Login in process › Short phone number login" classname="login.spec.js" time="1.201">
+</testcase>
+<testcase name="Login in process › Short PIN login" classname="login.spec.js" time="1.391">
+</testcase>
+<testcase name="Login in process › Long phone number login" classname="login.spec.js" time="1.398">
+</testcase>
+<testcase name="Verify sign up process › valid user sign up for an account" classname="login.spec.js" time="6.439">
+<failure message="login.spec.js:93:9 valid user sign up for an account" type="FAILURE">
+<![CDATA[  [chromium] › login.spec.js:93:9 › Verify sign up process › valid user sign up for an account ─────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Phone already registered')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Phone already registered')
+
+
+      101 |         )
+      102 |         const successSignUpMessage = page.getByText('Phone already registered')
+    > 103 |         await expect(successSignUpMessage).toBeVisible()
+          |                                            ^
+      104 |     })
+      105 | })
+      106 |
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\login.spec.js:103:44
+
+    Error Context: ..\test-results\login-Verify-sign-up-proce-a7f6d-user-sign-up-for-an-account-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\login-Verify-sign-up-proce-a7f6d-user-sign-up-for-an-account-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="organization.spec.js" timestamp="2026-05-06T10:10:37.220Z" hostname="chromium" tests="6" failures="4" skipped="0" time="99.745" errors="0">
+<testcase name="Organization Creation › create a new organization" classname="organization.spec.js" time="7.764">
+</testcase>
+<testcase name="Organization Creation › create a new sandbox organization" classname="organization.spec.js" time="30.103">
+<failure message="organization.spec.js:39:9 create a new sandbox organization" type="FAILURE">
+<![CDATA[  [chromium] › organization.spec.js:39:9 › Organization Creation › create a new sandbox organization 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Create Sandbox Organization' })
+
+
+       at ..\support\pages\organization.po.js:21
+
+      19 |         //3. Optionally check the sandbox checkbox
+      20 |         if (createSandbox) {
+    > 21 |             await this.createSandboxCheckbox.check()
+         |                                              ^
+      22 |         }
+      23 |         
+      24 |         //4. Submit the organization creation
+        at CreateOrganization.createNewOrganization (C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\support\pages\organization.po.js:21:46)
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\organization.spec.js:54:9
+
+    Error Context: ..\test-results\organization-Organization--f3366--a-new-sandbox-organization-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\organization-Organization--f3366--a-new-sandbox-organization-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Organization Creation › create organization with empty name" classname="organization.spec.js" time="30.113">
+<failure message="organization.spec.js:66:9 create organization with empty name" type="FAILURE">
+<![CDATA[  [chromium] › organization.spec.js:66:9 › Organization Creation › create organization with empty name 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: /Create( Organization)?/ })
+        - locator resolved to <button disabled class="px-5 py-2 rounded-xl text-sm font-semibold bg-primary-3 text-primary-1 hover:bg-yellow-400 transition-all disabled:opacity-40 disabled:cursor-not-allowed">Create</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        43 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+
+
+       at ..\support\pages\organization.po.js:25
+
+      23 |         
+      24 |         //4. Submit the organization creation
+    > 25 |         await this.submitOrganizationButton.click()
+         |                                             ^
+      26 |     }
+      27 | }
+      28 |   
+        at CreateOrganization.createNewOrganization (C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\support\pages\organization.po.js:25:45)
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\organization.spec.js:81:9
+
+    Error Context: ..\test-results\organization-Organization--6ff51-rganization-with-empty-name-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\organization-Organization--6ff51-rganization-with-empty-name-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Organization Creation › create organization with very long name" classname="organization.spec.js" time="6.976">
+</testcase>
+<testcase name="Organization Creation › create organization with special characters in name" classname="organization.spec.js" time="12.693">
+<failure message="organization.spec.js:116:9 create organization with special characters in name" type="FAILURE">
+<![CDATA[  [chromium] › organization.spec.js:116:9 › Organization Creation › create organization with special characters in name 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Organization name cannot contain special characters')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Organization name cannot contain special characters')
+
+
+      136 |         // 3. Add assertion to verify error message is shown
+      137 |          const specialCharError = page.getByText('Organization name cannot contain special characters');
+    > 138 |          await expect(specialCharError).toBeVisible();
+          |                                         ^
+      139 |     });
+      140 |
+      141 |     test('create duplicate organization', async ({page}) => {
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\organization.spec.js:138:41
+
+    Error Context: ..\test-results\organization-Organization--6bf2d--special-characters-in-name-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\organization-Organization--6bf2d--special-characters-in-name-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Organization Creation › create duplicate organization" classname="organization.spec.js" time="12.096">
+<failure message="organization.spec.js:141:9 create duplicate organization" type="FAILURE">
+<![CDATA[  [chromium] › organization.spec.js:141:9 › Organization Creation › create duplicate organization ──
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Organization already exists')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Organization already exists')
+
+
+      161 |         // 3. Add assertion to verify error message is shown
+      162 |         const duplicateError = page.getByText('Organization already exists');
+    > 163 |         await expect(duplicateError).toBeVisible();
+          |                                      ^
+      164 |     });
+      165 | });
+      166 |
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\organization.spec.js:163:38
+
+    Error Context: ..\test-results\organization-Organization--b00d6-eate-duplicate-organization-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\organization-Organization--b00d6-eate-duplicate-organization-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="project.spec.js" timestamp="2026-05-06T10:10:37.220Z" hostname="chromium" tests="6" failures="4" skipped="0" time="71.489" errors="0">
+<testcase name="Project Creation › create a new project" classname="project.spec.js" time="10.148">
+</testcase>
+<testcase name="Project Creation › create a new school by uploading excel file" classname="project.spec.js" time="11.142">
+</testcase>
+<testcase name="Project Creation › create project with empty name" classname="project.spec.js" time="14.732">
+<failure message="project.spec.js:67:9 create project with empty name" type="FAILURE">
+<![CDATA[  [chromium] › project.spec.js:67:9 › Project Creation › create project with empty name ────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Project name is required')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Project name is required')
+
+
+      87 |         // 3. Add assertion to verify error message is shown
+      88 |         const emptyNameError = page.getByText('Project name is required');
+    > 89 |         await expect(emptyNameError).toBeVisible();
+         |                                      ^
+      90 |     });
+      91 |
+      92 |     test('create project with empty county', async ({page}) => {
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\project.spec.js:89:38
+
+    Error Context: ..\test-results\project-Project-Creation-create-project-with-empty-name-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\project-Project-Creation-create-project-with-empty-name-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Project Creation › create project with empty county" classname="project.spec.js" time="6.043">
+<failure message="project.spec.js:92:9 create project with empty county" type="FAILURE">
+<![CDATA[  [chromium] › project.spec.js:92:9 › Project Creation › create project with empty county ──────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Login successful! Redirecting')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Login successful! Redirecting')
+
+
+      102 |         // Wait for successful login
+      103 |         const successMessage = page.getByText('Login successful! Redirecting');
+    > 104 |         await expect(successMessage).toBeVisible();
+          |                                      ^
+      105 |         
+      106 |         // 2. Try to create project with empty county
+      107 |         await projectPage.createNewProject(
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\project.spec.js:104:38
+
+    Error Context: ..\test-results\project-Project-Creation-create-project-with-empty-county-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\project-Project-Creation-create-project-with-empty-county-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Project Creation › create project with special characters in name" classname="project.spec.js" time="14.791">
+<failure message="project.spec.js:117:9 create project with special characters in name" type="FAILURE">
+<![CDATA[  [chromium] › project.spec.js:117:9 › Project Creation › create project with special characters in name 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Project name cannot contain special characters')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Project name cannot contain special characters')
+
+
+      137 |         // 3. Add assertion to verify error message is shown
+      138 |         const specialCharError = page.getByText('Project name cannot contain special characters');
+    > 139 |         await expect(specialCharError).toBeVisible();
+          |                                        ^
+      140 |     });
+      141 |
+      142 |     test('create duplicate project', async ({page}) => {
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\project.spec.js:139:40
+
+    Error Context: ..\test-results\project-Project-Creation-c-b37eb--special-characters-in-name-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\project-Project-Creation-c-b37eb--special-characters-in-name-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Project Creation › create duplicate project" classname="project.spec.js" time="14.633">
+<failure message="project.spec.js:142:9 create duplicate project" type="FAILURE">
+<![CDATA[  [chromium] › project.spec.js:142:9 › Project Creation › create duplicate project ─────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Project already exists')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Project already exists')
+
+
+      162 |         // 3. Add assertion to verify error message is shown
+      163 |         const duplicateError = page.getByText('Project already exists');
+    > 164 |         await expect(duplicateError).toBeVisible();
+          |                                      ^
+      165 |     });
+      166 | });
+      167 |
+        at C:\Users\Admin\OneDrive\Desktop\Nyansapo\NYSPweb\tests\project.spec.js:164:38
+
+    Error Context: ..\test-results\project-Project-Creation-create-duplicate-project-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\project-Project-Creation-create-duplicate-project-chromium\error-context.md]]
 ]]>
 </system-out>
 </testcase>

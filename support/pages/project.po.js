@@ -12,6 +12,7 @@ export class CreateProject {
         this.selectAddSchools = page.getByRole('button', { name: 'Add Schools' })
         this.fileInput = page.locator('input[type="file"]')
         this.excelFilePath = 'fixtures/school_template (3).xlsx'
+        this.existingProject = page.getByText('A project named "Existing')
 
     }
 
