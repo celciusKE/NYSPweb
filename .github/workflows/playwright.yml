@@ -23,7 +23,8 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
     - name: Send report via email
-      run: node sendReport.js
+     if: always() 
+      run: node send-report.js
       env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
