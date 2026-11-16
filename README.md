@@ -146,7 +146,7 @@ See `.github/workflows/playwright.yml` for configuration.
 
 Playwright configuration is in `playwright.config.js`. Key settings:
 - Test directory: `tests/`
-- Base URL: `https://nyansapofoundation-teaching-dashboa.vercel.app/`
+- Base URL: `https://nys-teaching-dashboa.vercel.app/`
 - Reporter: HTML and JSON
 - Timeout: 30 seconds per test
 
